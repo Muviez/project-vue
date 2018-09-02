@@ -1,19 +1,33 @@
 <template>
   <div>
-    <app-counter></app-counter>
+    <h2>{{ title }}</h2>
 
-    <app-car></app-car>
+  <input type="text" v-model="searchName">
+  <ul>
+    <li v-for="name of filteredNames" :key="name.id">{{ name }}</li>
+  </ul>
   </div>
 
 </template>
 
 <script>
 export default {
-  data () {
+  data() {
     return {
-      carName: 'Ford',
-      carYear: 2018
+      title: 'Hello i am Vue.js',
+      searchName: '',
+      names: ['Vlad', 'Egor', 'Kirill', 'Oleg', 'Anton']
     }
+  },
+  computed: {
+    filteredNames() {
+      return this.names.filter(name => {
+        return name.toLowerCase().indexOf(this.searchName.toLowerCase()) !== -1
+      })
+    }
+  },
+  filters: {
+
   }
 }
 </script>
