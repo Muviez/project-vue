@@ -1,9 +1,25 @@
 <template>
   <div>
     <h2>From inputs</h2>
-    <input type="text" v-model="name">
+    
+    <label>
+      <input type="checkbox" value="instagram" v-model="social"> Instagram
+    </label>
 
-    <p>{{name}}</p>
+    <label>
+      <input type="checkbox" value="vk" v-model="social"> VK
+    </label>
+
+    <label>
+      <input type="checkbox" value="facebook" v-model="social"> Facebook
+    </label>
+
+    <hr>
+
+    <ul>
+      <li v-for="s in social" :key="s.id">{{s}}</li>
+    </ul>
+
   </div>
 
 </template>
@@ -13,7 +29,7 @@
 export default {
   data() {
     return {
-      name: ''
+      social: []
     }
   }
 }
