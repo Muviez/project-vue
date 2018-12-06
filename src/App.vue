@@ -1,30 +1,41 @@
 <template>
-  <div>
-    <h2>From inputs</h2>
-    
-    <app-onoff v-model="switched"></app-onoff>
+  <div class="container">
+    <form class="pt-3">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input 
+          type="email"
+          id="email"
+          class="form-contorl"
+          @blur="$v.email.$touch()"
+          v-model="email"
+        >
 
-    <div>
-      <h3 v-if="switched">Command is enabled</h3>
-      <h3 v-else>Command is disbled</h3>
-    </div>
+        <pre>
+          {{$v.email}}
+        </pre>
+      </div>
+    </form>
   </div>
-
 </template>
 
 <script>
-import Onoff from './OnOff.vue'
+  import { required, email } from 'vuelidate/lib/validators'
 
-export default {
-  data() {
-    return {
-      switched: false
+  export default {
+
+    data() {
+      return {
+        email: ''
+      }
+    },
+    validations: {
+      email: {
+        required,
+        email
+      }
     }
-  },
-  components: {
-    appOnoff: Onoff
   }
-}
 </script>
 
 <style scoped>
