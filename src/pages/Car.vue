@@ -1,6 +1,8 @@
 <template>
     <div>
         <h1>Car id {{ id }}</h1>
+
+        <button class="btn btn-sm btn-info" @click="goBackToCars">Back</button>
     </div>
 </template>
 
@@ -9,6 +11,11 @@ export default {
     data() {
         return {
             id: this.$router.currentRoute.params['id'] // this.$route.params['id'] тоже самое что и this.$router.currentRoute.params['id']
+        }
+    },
+    methods: {
+        goBackToCars () {
+            this.$router.push('/cars')
         }
     },
     watch: {
