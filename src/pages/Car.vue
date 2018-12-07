@@ -2,7 +2,26 @@
     <div>
         <h1>Car id {{ id }}</h1>
 
-        <button class="btn btn-sm btn-info" @click="goBackToCars">Back</button>
+        <button class="btn btn-sm btn-default mb-2" @click="goBackToCars">Back</button>
+        <br>
+        <!-- <router-link 
+            class="btn btn-info"
+            tag="button"
+            :to="'/car/' + id + '/full'"
+        >
+            Full info
+        </router-link> -->
+
+        <router-link 
+            class="btn btn-info"
+            tag="button"
+            :to="{name: 'CarFull', params: {id: id}}"
+        >
+            Full info
+        </router-link>
+        <hr>
+
+        <router-view></router-view>
     </div>
 </template>
 
