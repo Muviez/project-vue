@@ -10,7 +10,10 @@
 
 <script>
 export default {
-    
+    beforeRouteEnter (to, fromR, next) {
+        console.log('beforeRouteEnter')
+        next()
+    }
 }
 </script>
 

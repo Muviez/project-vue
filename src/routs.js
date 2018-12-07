@@ -23,7 +23,11 @@ export default new VueRouter ({
                 {
                     path: 'full',
                     component: CarFull,
-                    name: 'CarFull'
+                    name: 'CarFull',
+                    beforeEnter (to, from, next) {
+                        console.log('beforeEnter')
+                        next()
+                    }
                 }
             ]
         },
