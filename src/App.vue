@@ -43,7 +43,7 @@
           name: this.carName,
           year: this.carYear
         }
-        
+
         this.resource.save({}, car)
 
       },
@@ -53,7 +53,7 @@
       }
     },
     created () {
-      this.resource = this.$resource('http://localhost:3000/cars')
+      this.resource = this.$resource('cars')
     }
   }
 </script>
