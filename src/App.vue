@@ -10,7 +10,20 @@
       <input type="text" id="year" class="form-control" v-model.number="carYear">
     </div>
 
-    <button class="btn btn-success" @click="createCar">Create car</button>
+    <button class="btn btn-success" @click="createCars">Create car</button>
+    <button class="btn btn-primary" @click="loadCars">Load cars</button>
+
+    <hr>
+
+    <ul class="list-group">
+      <li 
+        v-for="car of cars"
+        :key="car.id"
+        class="list-group-item"
+      >
+        <strong>{{ car.name }}</strong> - {{car.year}}
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -19,11 +32,12 @@
     data() {
       return {
         carName: '',
-        carYear: 2018
+        carYear: 2018,
+        cars: []
       }
     },
     methods: {
-      createCar () {
+      createCars () {
         const car = {
           name: this.carName,
           year: this.carYear
@@ -35,6 +49,15 @@
           })
           .then(carNew => {
             console.log(carNew)
+          })
+      },
+      loadCars () {
+        this.$http.get('http://localhost:3000/cars')
+          .then(response => {
+            return response.json()
+          })
+          .then(cars => {
+            this.cars = cars
           })
       }
     }
